@@ -34,7 +34,7 @@ end
 @container.start
 
 LISTEN_PORT=8080
-CONTAINER_START_DELAY=3
+CONTAINER_START_DELAY=10
 
 RSpec.configure do |c|
   @image = Docker::Image.get(ENV['IMAGE'])
