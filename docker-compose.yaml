@@ -1,0 +1,22 @@
+version: '2'
+services:
+  drupal:
+    hostname: drupal
+    build: .
+    image: ubuntu-16-apache-2.4-php-5.6-drupal7
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+# Using official mysql for testing, this will need changing to our mysql/mariadb when ready.
+  mysql:
+    hostname: mysql
+    image: mysql
+    environment:
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: EnvVarHere
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: 82LqaSc2V5BT5eyx
