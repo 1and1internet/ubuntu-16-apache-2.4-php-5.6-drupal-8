@@ -15,7 +15,7 @@ if not ENV['IMAGE'] then
   puts "You must provide an IMAGE env variable"
 end
 
-@network = Docker::Network.create "drupaltest"
+@network = Docker::Network.create "drupal8test"
 @mysqlimage = Docker::Image.create('fromImage' => 'mysql:latest')
 @container = Docker::Container.create(
   'name'           => MYSQL_HOST,
@@ -34,6 +34,7 @@ end
 @container.start
 
 LISTEN_PORT=8080
+CONTAINER_START_DELAY=3
 
 RSpec.configure do |c|
   @image = Docker::Image.get(ENV['IMAGE'])

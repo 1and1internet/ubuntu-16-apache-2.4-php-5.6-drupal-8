@@ -4,7 +4,7 @@ services:
     user: "1000000"
     hostname: drupal
     build: .
-    image: ubuntu-16-apache-2.4-php-5.6-drupal8
+    image: drupal8
     ports:
       - "8080:8080"
     depends_on:

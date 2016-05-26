@@ -1,9 +1,0 @@
-#!/bin/bash
-
-#Checking to see if Drupal already exists. If it does then won't copy from /usr/src/ otherwise we will.
-
-if [ ! -e "/var/www/html/sites/default/settings.php" ] | [ ! -e "/var/www/html/sites/default/default.settings.php" ]; then
-	cp -r /usr/src/* .
-	mkdir sites/default/files
-	chown -R www-data:www-data sites
-fi
