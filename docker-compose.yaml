@@ -12,12 +12,12 @@ services:
     links:
       - mysql
 
-# Using official mysql for testing, this will need changing to our mysql/mariadb when ready.
   mysql:
+    user: "1000000"
     hostname: mysql
-    image: mysql
+    image: 1and1internet/ubuntu-16-nginx-1.10.0-php-7.0-phpmyadmin-4.6-mysql-5.7:unstable
     environment:
       MYSQL_USER: drupal
-      MYSQL_PASSWORD: EnvVarHere
+      MYSQL_PASSWORD: EnvVarHere 
       MYSQL_DATABASE: drupal
       MYSQL_ROOT_PASSWORD: 82LqaSc2V5BT5eyx

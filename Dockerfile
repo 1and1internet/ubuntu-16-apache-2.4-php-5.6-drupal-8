@@ -3,7 +3,7 @@ MAINTAINER james.poole@fasthosts.com
 ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /var/www/html
 COPY files /
-ENV DRUPAL_VERSION=8.1.1 \
+ENV DRUPAL_VERSION=8.1.2 \
     DRUPAL_DB_HOST=mysql \
     DRUPAL_DB_PORT=3306 \
     DRUPAL_DB_USER=drupal \
