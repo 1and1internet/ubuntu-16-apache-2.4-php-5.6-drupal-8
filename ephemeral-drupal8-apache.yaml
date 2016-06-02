@@ -202,7 +202,7 @@ parameters:
 - description: Drupal 8 Database User
   displayname: Drupal 8 Database User
   name: DRUPAL_DB_USER
-  from: wp-db-user[0-9]{3}
+  from: drupal-db-user[0-9]{3}
   generate: expression
   required: true
 - description: Drupal 8 Database Password
