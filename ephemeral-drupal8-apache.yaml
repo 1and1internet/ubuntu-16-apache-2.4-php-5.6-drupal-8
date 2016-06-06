@@ -3,7 +3,7 @@ kind: Template
 metadata:
   annotations:
     description: Ephemeral Drupal 8 content management system (CMS)
-  name: jp-1and1-drupal8-apache-ephemeral
+  name: 1and1-drupal8-apache-mysql-ephemeral
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
@@ -36,7 +36,7 @@ objects:
             value: ${DATABASE_ADMIN_PASSWORD}
           - name: MYSQL_USER
             value: ${DRUPAL_DB_USER}
-          image: 1and1internet/ubuntu-16-nginx-1.10.0-php-7.0-phpmyadmin-4.6-mysql-5.7:unstable 
+          image: 1and1internet/ubuntu-16-nginx-1.10.0-php-7.0-phpmyadmin-4.6-mysql-5.7:latest
           imagePullPolicy: Always
           name: ${DATABASE_SERVICE_NAME}
           ports:
@@ -103,7 +103,7 @@ objects:
             value: ${DRUPAL_DB_PREFIX}
           - name: DRUPAL_DB_USER
             value: ${DRUPAL_DB_USER}
-          image: 1and1internet/ubuntu-16-apache-2.4-php-5.6-drupal-8:unstable
+          image: 1and1internet/ubuntu-16-apache-2.4-php-5.6-drupal-8:latest
           imagePullPolicy: Always
           name: ${APP_SERVICE_NAME}
           ports:
