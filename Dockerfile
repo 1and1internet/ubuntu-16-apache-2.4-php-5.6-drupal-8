@@ -3,8 +3,7 @@ MAINTAINER james.poole@1and1.co.uk
 ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /var/www/html
 COPY files /
-ENV DRUPAL_VERSION=8.1.2 \
-    DRUPAL_DB_HOST=mysql \
+ENV DRUPAL_DB_HOST=mysql \
     DRUPAL_DB_PORT=3306 \
     DRUPAL_DB_USER=drupal \
     DRUPAL_DB_NAME=drupal \
@@ -14,5 +13,6 @@ ENV DRUPAL_VERSION=8.1.2 \
 RUN \
     apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev drush && \
     rm -rf /var/lib/apt/lists/* && \
-    curl -fSL "https://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o /usr/src/drupal.tar.gz && \
+    DRUPAL_VERSION=$(curl -fsl https://ftp.drupal.org/files/projects/ | grep -Eo 'drupal-8.[0-9]{1,4}.[0-9]{1,4}.tar.gz' | sort -nr | head -1) && \
+    curl -fSL "https://ftp.drupal.org/files/projects/${DRUPAL_VERSION}" -o /usr/src/drupal.tar.gz && \
     chmod -R 755 /hooks /init
