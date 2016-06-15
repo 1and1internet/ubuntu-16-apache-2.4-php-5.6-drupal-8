@@ -1,1 +1,1 @@
-# docker-ubuntu-16-apache-2.4-php-5.6-drupal-8
+# ubuntu-16-apache-php-5.6-drupal-8
