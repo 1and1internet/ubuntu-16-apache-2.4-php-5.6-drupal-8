@@ -1,4 +1,4 @@
-FROM 1and1internet/ubuntu-16-apache-2.4-php-5.6:latest
+FROM 1and1internet/ubuntu-16-apache-php-5.6:latest
 MAINTAINER james.poole@1and1.co.uk
 ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /var/www/html
