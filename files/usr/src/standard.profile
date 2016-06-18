@@ -61,7 +61,9 @@ function standard_1and1_install_settings_defaults(&$install_state){
 	'port' => $_ENV['DRUPAL_DB_PORT'],
 	'prefix' => isset($_ENV['DRUPAL_DB_PREFIX']) ? $_ENV['DRUPAL_DB_PREFIX'] : null,
   );
-
+    
+    global $install_state;
+    
     // Update global settings array and save.
     $settings = array();
     $settings['databases']['default']['default'] = (object) array(
@@ -70,11 +72,6 @@ function standard_1and1_install_settings_defaults(&$install_state){
     );
     $settings['settings']['hash_salt'] = (object) array(
       'value'    => Crypt::randomBytesBase64(55),
-      'required' => TRUE,
-    );
-    // Remember the profile which was used.
-    $settings['settings']['install_profile'] = (object) array(
-      'value' => $install_state['parameters']['profile'],
       'required' => TRUE,
     );
 
@@ -88,7 +85,6 @@ function standard_1and1_install_settings_defaults(&$install_state){
     // last step is important since we want to trigger an error if the new
     // database already has Drupal installed.
     $install_state['settings_verified'] = TRUE;
-    $install_state['config_verified'] = TRUE;
-    $install_state['database_verified'] = TRUE;
     $install_state['completed_task'] = install_verify_completed_task();
+    return NULL;
 }

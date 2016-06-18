@@ -12,15 +12,15 @@ else
     tar -xz --strip-components=1 -f /usr/src/drupal.tar.gz -C /var/www/html/
 fi
 
-#Checking if DB ENV set, if they do rename fh_settings.php to settings.php.
+#Checking if DB ENV set, if they do add our standard profile into drupal.
 
 declare -a DB_DETAILS=($DRUPAL_DB_HOST $DRUPAL_DB_USER $DRUPAL_DB_NAME $DRUPAL_DB_PASSWORD)
 DB_CHECK="echo ${DB_DETAILS[@]}"
 
 if [ -z "$DB_CHECK" ]; then
 	echo "No database details provided, leaving settings.php."
-    exit 0
+  exit 0
 else
-    cp /usr/src/fh_settings.php /var/www/html/sites/default/settings.php
-    echo "Copied DB config over."
+  cp /usr/src/standard.profile /var/www/html/core/profiles/standard/standard.profile
+  echo "Copied DB config over."
 fi
