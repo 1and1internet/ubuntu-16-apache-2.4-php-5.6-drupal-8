@@ -16,3 +16,4 @@ RUN \
     DRUPAL_VERSION=$(curl -fsl https://ftp.drupal.org/files/projects/ | grep -Eo 'drupal-8.[0-9]{1,4}.[0-9]{1,4}.tar.gz' | sort -nr | head -1) && \
     curl -fSL "https://ftp.drupal.org/files/projects/${DRUPAL_VERSION}" -o /usr/src/drupal.tar.gz && \
     chmod -R 755 /hooks /init
+
