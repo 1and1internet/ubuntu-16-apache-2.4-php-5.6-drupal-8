@@ -27,14 +27,6 @@ function standard_form_install_configure_submit($form, FormStateInterface $form_
   ContactForm::load('feedback')->setRecipients([$site_mail])->trustData()->save();
 }
 
-
-function standard_install_tasks_alter(&$tasks, $install_state) {
-  // Hide the database configuration step.
-  $tasks['install_settings_form']['display'] = FALSE;
-  $tasks['install_settings_form']['function'] = 'standard_1and1_install_settings_defaults';
-  $tasks['install_settings_form']['type'] = 'normal';
-}
-
 function standard_1and1_install_settings_defaults(&$install_state){ 
   // Get variables in.
   $vars = array(
@@ -61,7 +53,7 @@ function standard_1and1_install_settings_defaults(&$install_state){
 	'port' => $_ENV['DRUPAL_DB_PORT'],
 	'prefix' => isset($_ENV['DRUPAL_DB_PREFIX']) ? $_ENV['DRUPAL_DB_PREFIX'] : null,
   );
-    
+
     global $install_state;
     
     // Update global settings array and save.
@@ -88,3 +80,10 @@ function standard_1and1_install_settings_defaults(&$install_state){
     $install_state['completed_task'] = install_verify_completed_task();
     return NULL;
 }
+function standard_install_tasks_alter(&$tasks, $install_state) {
+  // Hide the database configuration step.
+  $tasks['install_settings_form']['display'] = FALSE;
+  $tasks['install_settings_form']['function'] = 'standard_1and1_install_settings_defaults';
+  $tasks['install_settings_form']['type'] = 'normal';
+}
+
